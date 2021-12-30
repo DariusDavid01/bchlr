@@ -10,7 +10,6 @@
  <div class="box">
    <div class="box-header with-border">
      <h4 class="box-title">Admin change password</h4>
-     <h6 class="box-subtitle">Bootstrap Form Validation check the <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>
    </div>
    <!-- /.box-header -->
    <div class="box-body">

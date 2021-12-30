@@ -9,13 +9,14 @@
             <li><a href="#"><i class="icon fa fa-user"></i>
             @if(session()->get('language') == 'romanian') Contul meu @else My account @endif
           </a></li>
-            <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-            <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
+            <li><a href="{{route('wishlist')}}"><i class="icon fa fa-heart"></i>@if(session()->get('language') == 'romanian') Lista dorinte @else Wishlist @endif</a></li>
+            <li><a href="{{route('mycart')}}"><i class="icon fa fa-shopping-cart"></i>@if(session()->get('language') == 'romanian') Cosul meu @else My cart @endif</a></li>
+            <li><a href="{{route('checkout')}}"><i class="icon fa fa-check"></i>Checkout</a></li>
+            <li><a href="" type="button" data-toggle="modal" data-target="#ordertracking"><i class="icon fa fa-truck"></i>@if(session()->get('language') == 'romanian') Urmarire comanda @else Order Tracking @endif</a></li>
             @auth
-            <li><a href="{{route('login')}}"><i class="icon fa fa-user"></i>User Profile</a></li>
+            <li><a href="{{route('login')}}"><i class="icon fa fa-user"></i>@if(session()->get('language') == 'romanian') Profil @else User Profile @endif</a></li>
             @else
-            <li><a href="{{route('login')}}"><i class="icon fa fa-lock"></i>Login/Register</a></li>
+            <li><a href="{{route('login')}}"><i class="icon fa fa-lock"></i>@if(session()->get('language') == 'romanian') Autentificare/Inregistrare @else Login/Register @endif</a></li>
             @endauth
           </ul>
         </div>
@@ -57,8 +58,11 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder"> 
+          @php 
+          $setting = App\Models\SiteSetting::find(1);
+          @endphp
           <!-- ============================================================= LOGO ============================================================= -->
-          <div class="logo"> <a href="{{url('/')}}"> <img src="{{asset('frontend/assets/images/logo.png')}}" alt="logo"> </a> </div>
+          <div class="logo"> <a href="{{url('/')}}"> <img src="{{asset($setting->logo)}}" alt="logo"> </a> </div>
           <!-- /.logo --> 
           <!-- ============================================================= LOGO : END ============================================================= --> </div>
         <!-- /.logo-holder -->
@@ -67,7 +71,8 @@
           <!-- /.contact-row --> 
           <!-- ============================================================= SEARCH AREA ============================================================= -->
           <div class="search-area">
-            <form>
+            <form method="post" action="{{route('product.search')}}">
+              @csrf
               <div class="control-group">
                 <ul class="categories-filter animate-dropdown">
                   <li class="dropdown"> <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
@@ -80,9 +85,12 @@
                     </ul>
                   </li>
                 </ul>
-                <input class="search-field" placeholder="Search here..." />
-                <a class="search-button" href="#" ></a> </div>
+                <input class="search-field" onfocus="search_result_show()" onblur="search_result_hide()" id="search" name="search" placeholder="Search here..." />
+                <button class="search-button" type="submit" ></button> </div>
             </form>
+            <div id="searchProducts">
+              
+            </div>
           </div>
           <!-- /.search-area --> 
           <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
@@ -94,31 +102,21 @@
           <div class="dropdown dropdown-cart"> <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
             <div class="items-cart-inner">
               <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
-              <div class="basket-item-count"><span class="count">2</span></div>
-              <div class="total-price-basket"> <span class="lbl">cart -</span> <span class="total-price"> <span class="sign">$</span><span class="value">600.00</span> </span> </div>
+              <div class="basket-item-count"><span class="count" id="cartQty"></span></div>
+              <div class="total-price-basket"> <span class="lbl">@if(session()->get('language') == 'romanian') cos @else cart @endif -</span> <span class="total-price"> <span class="sign">$</span><span class="value" id="cartSubTotal"></span> </span> </div>
             </div>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <div class="cart-item product-summary">
-                  <div class="row">
-                    <div class="col-xs-4">
-                      <div class="image"> <a href="detail.html"><img src="{{asset('frontend/assets/images/cart.jpg')}}" alt=""></a> </div>
-                    </div>
-                    <div class="col-xs-7">
-                      <h3 class="name"><a href="index.php?page-detail">Simple Product</a></h3>
-                      <div class="price">$600.00</div>
-                    </div>
-                    <div class="col-xs-1 action"> <a href="#"><i class="fa fa-trash"></i></a> </div>
-                  </div>
+                <!-- // mini cart start with ajax -->
+                <div id="miniCart">
+
                 </div>
-                <!-- /.cart-item -->
-                <div class="clearfix"></div>
-                <hr>
+
                 <div class="clearfix cart-total">
-                  <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>$600.00</span> </div>
+                  <div class="pull-right"> <span class="text">Total :</span><span class='price' id="cartSubTotal"></span> </div>
                   <div class="clearfix"></div>
-                  <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
+                  <a href="{{route('mycart')}}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
                 <!-- /.cart-total--> 
                 
               </li>
@@ -201,7 +199,7 @@
                   </ul>
                 </li>
                 @endforeach
-                <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
+                <li class="dropdown  navbar-right special-menu"> <a href="{{route('home.blog')}}">Blog</a> </li>
               </ul>
               <!-- /.navbar-nav -->
               <div class="clearfix"></div>
@@ -220,5 +218,51 @@
   </div>
   <!-- /.header-nav --> 
   <!-- ============================================== NAVBAR : END ============================================== --> 
-  
+  <div class="modal fade" id="ordertracking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Track your order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="{{route('order.tracking')}}">
+          @csrf 
+          <div class="modal-body">
+            <label>Invoice Code</label>
+              <input type="text" name="code" required="" class="form-control" placeholder="Your order invoice number">
+          </div>
+          <button class="btn btn-danger" type="submit" style="margin-left:17px;">Track now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 </header>
+
+<style>
+  .search-area{
+    position:relative;
+  }
+  #searchProducts{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    z-index: 999;
+    border-radius: 9px;
+    margin-top: 5px;
+  }
+</style>
+
+<script>
+  function search_result_hide(){
+    $("#searchProducts").slideUp();
+  }
+  function search_result_show(){
+    $("#searchProducts").slideDown();
+  }
+</script>

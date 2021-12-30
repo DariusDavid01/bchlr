@@ -10,7 +10,6 @@
  <div class="box">
    <div class="box-header with-border">
      <h4 class="box-title">Profile edit</h4>
-     <h6 class="box-subtitle">Bootstrap Form Validation check the <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>
    </div>
    <!-- /.box-header -->
    <div class="box-body">
@@ -48,7 +47,7 @@
                </div>
                
                <div class="col-md-6">
-                       <img id="showImage" src="{{ (!empty($editData->profile_photo_path)) ? url('upload/admin_images/'.$editData->profile_photo_path):url('upload/no_image.jpg') }}" style="width: 100px; height:100px">
+                       <img id="showImage" src="{{ (!empty($editData->profile_photo_path)) ? url($editData->profile_photo_path):url('upload/no_image.jpg') }}" style="width: 100px; height:100px">
                           
                </div>
                    </div>

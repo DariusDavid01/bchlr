@@ -9,8 +9,35 @@ Sub Sub Category Product
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
+      @if(session()->get('language') == 'romanian') 
+      <li><a href="#">Acasa</a></li>
+      @else
         <li><a href="#">Home</a></li>
-        <li class='active'>Handbags</li>
+        @endif
+
+        @foreach($breadsubsubcat as $item)
+        @if(session()->get('language') == 'romanian') 
+        <li class="active">{{$item->category->category_name_ro}}</li>
+      @else
+      <li class="active">{{$item->category->category_name_en}}</li>
+        @endif
+        @endforeach 
+
+        @foreach($breadsubsubcat as $item)
+        @if(session()->get('language') == 'romanian') 
+        <li class='active'>{{$item->subcategory->subcategory_name_ro}}</li>
+      @else
+      <li class='active'>{{$item->subcategory->subcategory_name_en}}</li>
+        @endif
+        @endforeach
+
+        @foreach($breadsubsubcat as $item)
+        @if(session()->get('language') == 'romanian') 
+        <li class='active'>{{$item->subsubcategory_name_ro}}</li>
+        @else
+        <li class='active'>{{$item->subsubcategory_name_en}}</li>
+        @endif
+        @endforeach
       </ul>
     </div>
     <!-- /.breadcrumb-inner --> 
@@ -168,6 +195,29 @@ Sub Sub Category Product
           </div>
         </div>
         
+        @foreach($breadsubsubcat as $item)
+        @if(session()->get('language') == 'romanian') 
+        <span class="badge badge-danger" style="background: #808080">{{$item->category->category_name_ro}}</span>
+      @else
+      <span class="badge badge-danger" style="background: #808080">{{$item->category->category_name_en}}</span>
+        @endif
+        @endforeach 
+
+        @foreach($breadsubsubcat as $item)
+        @if(session()->get('language') == 'romanian') 
+        <span class="badge badge-danger" style="background: #808080">{{$item->subcategory->subcategory_name_ro}}</span>
+      @else
+      <span class="badge badge-danger" style="background: #808080">{{$item->subcategory->subcategory_name_en}}</span>
+        @endif
+        @endforeach
+
+        @foreach($breadsubsubcat as $item)
+        @if(session()->get('language') == 'romanian') 
+        <span class="badge badge-danger" style="background: #FF0000">{{$item->subsubcategory_name_ro}}</span>
+        @else
+        <span class="badge badge-danger" style="background: #FF0000">{{$item->subsubcategory_name_en}}</span>
+        @endif
+        @endforeach
      
         <div class="clearfix filters-container m-t-10">
           <div class="row">

@@ -9,8 +9,27 @@ Subcategory Product
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
+      @if(session()->get('language') == 'romanian') 
+      <li><a href="#">Acasa</a></li>
+      @else
         <li><a href="#">Home</a></li>
-        <li class='active'>Handbags</li>
+        @endif
+
+        @foreach($breadsubcat as $item)
+        @if(session()->get('language') == 'romanian') 
+        <li class="active">{{$item->category->category_name_ro}}</li>
+      @else
+      <li class="active">{{$item->category->category_name_en}}</li>
+        @endif
+        @endforeach 
+
+        @foreach($breadsubcat as $item)
+        @if(session()->get('language') == 'romanian') 
+        <li class='active'>{{$item->subcategory_name_ro}}</li>
+      @else
+      <li class='active'>{{$item->subcategory_name_en}}</li>
+        @endif
+        @endforeach
       </ul>
     </div>
     <!-- /.breadcrumb-inner --> 
@@ -168,7 +187,15 @@ Subcategory Product
           </div>
         </div>
         
-     
+        @foreach($breadsubcat as $item)
+        <span class="badge badge-danger" style="background: #808080">@if(session()->get('language') == 'romanian') {{$item->category->category_name_ro}} @else {{$item->category->category_name_en}} @endif</span>
+        @endforeach 
+        /
+        @foreach($breadsubcat as $item)
+        <span class="badge badge-danger" style="background: #FF0000">@if(session()->get('language') == 'romanian') {{$item->subcategory_name_ro}} @else {{$item->subcategory_name_en}} @endif</span>
+        @endforeach
+<br>
+
         <div class="clearfix filters-container m-t-10">
           <div class="row">
             <div class="col col-sm-6 col-md-2">

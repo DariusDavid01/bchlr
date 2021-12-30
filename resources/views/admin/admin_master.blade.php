@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
 
-    <title>Easy Ecommerce Admin - Dashboard</title>
+    <title>Try before Buy Admin - Dashboard</title>
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
@@ -85,32 +85,8 @@
   }
   @endif
   </script>
-  <script type="text/javascript">
-    $(function(){
-      $(document).on('click','#delete',function(e){
-        e.preventDefault();
-        var link = $(this).attr("href");
-            Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = link
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-            }
-          })
-      });
-    });
-    </script>
+  
+	<script src="{{asset('backend/js/code.js')}}"></script>
 	
 </body>
 </html>

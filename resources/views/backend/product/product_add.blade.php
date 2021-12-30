@@ -22,7 +22,7 @@
                 <div class="col-12">	
 
                     <div class="row"> <!-- start 1st row -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
 								<h5>Brand Select <span class="text-danger">*</span></h5>
 								<div class="controls">
@@ -38,7 +38,7 @@
 								</div>
 							</div>
                         </div> <!-- end col md 4 -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
 								<h5>Category Select <span class="text-danger">*</span></h5>
 								<div class="controls">
@@ -54,7 +54,7 @@
 								</div>
 							</div>
                         </div> <!-- end col md 4 -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
 								<h5>SubCategory Select <span class="text-danger">*</span></h5>
 								<div class="controls">
@@ -70,7 +70,7 @@
                     </div> <!-- end 1st row-->
 
                     <div class="row"> <!-- start 2nd row -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
 								<h5>SubSubCategory Select <span class="text-danger">*</span></h5>
 								<div class="controls">
@@ -83,7 +83,7 @@
 								</div>
 							</div>
                         </div> <!-- end col md 4 -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Name En <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -92,7 +92,7 @@
 						<span class="text-danger">{{$message}}</span>
 						@enderror</div></div>
                         </div> <!-- end col md 4 -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Name Ro <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -105,7 +105,7 @@
                     
                     
                     <div class="row"> <!-- start 3rd row -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Code <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -116,7 +116,7 @@
                         </div> <!-- end col md 4 -->
 
 
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Quantity <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -127,7 +127,7 @@
                         </div> <!-- end col md 4 -->
 
 
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Tags En <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -141,7 +141,7 @@
 
                     
                     <div class="row"> <!-- start 4th row -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Tags Ro <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -152,7 +152,7 @@
                         </div> <!-- end col md 4 -->
 
 
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Size En <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -163,7 +163,7 @@
                         </div> <!-- end col md 4 -->
 
 
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Size Ro <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -176,7 +176,7 @@
                     </div> <!-- end 4th row-->
 
                     <div class="row"> <!-- start 5th row -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Color En <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -187,7 +187,7 @@
                         </div> <!-- end col md 4 -->
 
 
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Color Ro <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -198,7 +198,7 @@
                         </div> <!-- end col md 4 -->
 
 
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Selling Price <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -212,7 +212,7 @@
 
 
                     <div class="row"> <!-- start 6th row -->
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Product Discount Price <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -223,7 +223,7 @@
                         </div> <!-- end col md 4 -->
 
 
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Main Thumbnail <span class="text-danger">*</span></h5>
                         <div class="controls">
@@ -236,7 +236,7 @@
                         </div> <!-- end col md 4 -->
 
 
-                        <div class="col-md 4">
+                        <div class="col-md-4">
                         <div class="form-group">
                         <h5>Multiple Image <span class="text-danger">*</span></h5>
                         <div class="controls">

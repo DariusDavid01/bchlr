@@ -54,8 +54,12 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                 <div class="cart clearfix animate-effect">
                   <div class="action">
                     <div class="add-cart-button btn-group">
-                      <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                      <button class="btn btn-primary cart-btn" type="button">@if(session()->get('language') == 'romanian') Adauga in cos @else Add to cart @endif</button>
+                      <button class="btn btn-primary icon" data-target="#exampleModal"  id="{{$product->id}}" onclick="productView(this.id)"  data-toggle="modal" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                      @if(session()->get('language') == 'romanian') 
+                              <button data-toggle="modal" data-target="#exampleModal"  id="{{$product->id}}" onclick="productView(this.id)" class="btn btn-primary cart-btn" type="button" title="Adauda in cos"> Adauga in cos </button> 
+                              @else 
+                              <button data-toggle="modal" data-target="#exampleModal"  id="{{$product->id}}" onclick="productView(this.id)" class="btn btn-primary cart-btn" type="button" title="Add to cart"> Add to cart </button> 
+                              @endif
                     </div>
                   </div>
                   <!-- /.action --> 
